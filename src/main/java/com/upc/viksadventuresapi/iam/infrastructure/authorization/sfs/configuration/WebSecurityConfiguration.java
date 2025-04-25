@@ -97,7 +97,11 @@ public class WebSecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(List.of("http://localhost:4200"));
+        corsConfig.setAllowedOrigins(List.of(
+                "http://localhost:4200",  // 👉 para pruebas locales
+                "https://viks-adventures-api-master.onrender.com",  // 👉 para producción si hiciera fetch a sí mismo
+                "https://tu-front-en-vercel.vercel.app" // 👉 reemplazar luego cuando tengas dominio de Vercel
+        ));
         corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         corsConfig.setAllowedHeaders(List.of("*"));
         corsConfig.setAllowCredentials(true);
